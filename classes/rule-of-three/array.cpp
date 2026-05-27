@@ -22,6 +22,7 @@ using namespace std;
 // (0, 1, 4, 9, ...). This is the `new[]` that the copy operations
 // below must DUPLICATE (deep copy), not merely alias (shallow copy).
 Array::Array() {
+    cout << "Constructor\n";
     data = new int[10];
     for (int i = 0; i < 10; i++) {
         data[i] = i * i;
