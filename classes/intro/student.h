@@ -38,24 +38,32 @@ class Student {
 
   public:
     // ── Special member functions ──
-    Student();          // CONSTRUCTOR: runs automatically when a
-                        //   Student is created. Same name as the
-                        //   class, no return type. Sets up the
-                        //   object's initial state.
-    ~Student();         // DESTRUCTOR: runs automatically when a
-                        //   Student is destroyed (goes out of scope).
-                        //   Same name with a leading ~, no parameters,
-                        //   no return type. Used for cleanup.
+    Student();                 // CONSTRUCTOR: runs automatically when a
+                               //   Student is created. Same name as the
+                               //   class, no return type. Sets up the
+                               //   object's initial state.
+    Student(std::string name); // OVERLOADED constructor: a second way to
+                               //   build a Student, taking an initial name.
+                               //   Must be `std::string`, not bare `string`:
+                               //   a header must NOT do `using namespace std;`
+                               //   (it would leak into every file that
+                               //   includes it), so standard-library names
+                               //   stay fully qualified here. student.cpp can
+                               //   write `string` only because it has its own
+                               //   using-directive.
+    ~Student();                // DESTRUCTOR: runs automatically when a
+                               //   Student is destroyed (goes out of scope).
+                               //   Same name with a leading ~, no parameters,
+                               //   no return type. Used for cleanup.
 
-    void print_name();  // An ordinary member function (method).
-                        //   Its body is defined in student.cpp.
+    void print_name(); // An ordinary member function (method).
+                       //   Its body is defined in student.cpp.
 
-  public:
+  private:
     // ── Data member ──
-    // Public here ONLY to keep this intro simple (main.cpp sets it
-    // directly via john.m_name = "john"). In real code you'd usually
-    // make data members PRIVATE and set them through a constructor
-    // parameter or a setter, so the class controls its own state.
-    // See the note in main.cpp.
+    // PRIVATE: outside code cannot touch m_name directly. It is set
+    // through the Student(std::string) constructor instead, so the
+    // class fully controls its own state. main.cpp supplies the name
+    // by passing it to that constructor, not by poking at the member.
     std::string m_name;
 };

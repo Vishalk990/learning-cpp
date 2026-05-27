@@ -24,16 +24,15 @@
 
 int main() {
     // Declaring the object calls Student's constructor right here.
-    Student john;            // an INSTANCE (object) of class Student
+    Student st("john"); // an INSTANCE (object) of class Student
 
     // m_name is public, so we can assign it directly. In real code
     // you'd usually pass the name to the constructor or a setter and
     // keep m_name private — an object should own and guard its own
     // state rather than letting outside code poke at it freely.
-    john.m_name = "john";
 
     // Call a member function with the `.` operator on the object.
-    john.print_name();       // prints "john"
+    st.print_name(); // prints "john"
 
     return 0;
     // john's destructor runs here, as main() returns.

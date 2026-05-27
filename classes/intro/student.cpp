@@ -38,6 +38,12 @@ Student::Student() {
     cout << "Constructor\n";
 }
 
+Student::Student(string name) {
+    m_name = name;
+    cout << "Constructor Is : \n";
+    cout << "m_nam  e is: " << m_name << endl;
+}
+
 // DESTRUCTOR definition. Runs when a Student object is destroyed.
 // Here it just announces itself; a real destructor would release any
 // resources the object owns (heap memory, file handles, etc.).
